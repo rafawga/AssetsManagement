@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+        
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <nav style="background-color: black; margin-bottom: 30px;" class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="/" style="display: flex; align-items: center;">
+                <img src="img/Ferramenta.png" alt="Logo" style="width: 30px; height: 30px; margin-right: 5px;">
+                <div style="color: azure;">Suporte Técnico</div>
+            </a>
+
+
+            <div class="btn" style="background-color: grey; border-radius: 5px;">
+                <form action="/limpar" method="post">
+                <button type="button" class="btn btn-primary" style="background-color: grey; border: none; color: azure; text-decoration: none; padding: 0;" onclick="confirmarLimparChamados()">
+                    Limpar Chamados
+                </button>
+                <input type="hidden" name="limpar" value="true">
+            </form>
+            </div>
+            
+            <script>
+                function confirmarLimparChamados() {
+                    var inputText = prompt("localhostdiz...\n\nDigite 'tenho certeza' para confirmar:");
+            
+                    if (inputText === "tenho certeza") {
+                        // Autorizar o envio do formulário
+                        document.querySelector("form").addEventListener("submit", function(event) {
+                            // Impedir o envio do formulário se necessário
+                            event.preventDefault();
+                            // Enviar o formulário
+                            this.submit();
+                        });
+            
+                        // Enviar o formulário
+                        document.querySelector("form").submit();
+                    }
+                }
+            </script>
+            
+        </div>
+    </nav>
+    
+    
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card cardjust">
+                    <h5 class="card-title">Dispositivos</h5>
+                    <hr class="card-line" style="border-top: 1px solid #ccc;">
+                    <img src="/img/computador.avif" style="width: 250px;" class="card-img-top imgcard"  alt="Dispositivos">
+                    <div class="card-body">
+                        <form method="post" action="/criarChamado">
+                            <input type="text" style="display: none;" name="tipo" value="Dispositivos">
+                            <button type="submit" class="btn btn-primary btncustom">Abrir Chamado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card cardjust">
+                    <h5 class="card-title">Periféricos</h5>
+                    <hr class="card-line" style="border-top: 1px solid #ccc;">
+                    <img src="img/perifericos.png"  style="width: 250px;"  class="card-img-top imgcard" alt="Periféricos">
+                    <div class="card-body">
+                        <form method="post" action="/criarChamado">
+                            <input type="text" style="display: none;" name="tipo" value="Perifericos">
+                            <button type="submit" class="btn btn-primary btncustom">Abrir Chamado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card cardjust">
+                    <h5 class="card-title">Software</h5>
+                    <hr class="card-line" style="border-top: 1px solid #ccc;">
+                    <img src="img/software.png"  style="width: 250px;" class="card-img-top imgcard" alt="Software">
+                    <div class="card-body">
+                        <form method="post" action="/criarChamado">
+                            <input type="text" style="display: none;" name="tipo" value="Software">
+                            <button type="submit" class="btn btn-primary btncustom">Abrir Chamado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div style="background-color: blue; height: 3px; margin-top: 50px;"></div>
+    <h2 class="text-center" style="color: #00008B; font-family: 'Rowdies', sans-serif; padding-top: 30px;">Chamados</h2>
+    <div class="container" style="margin-top: 30px;">
+        <table class="table table-bordered text-center">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Cliente</th>
+              <th scope="col">Problema</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < chamados.length; i++) { %>
+              <tr>
+                <td><%= chamados[i].Nome %></td>
+                <td><%= chamados[i].Descricao %></td>
+                <td><%= chamados[i].Tipo %></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      
+</body>
+
+</html>

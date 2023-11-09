@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .center-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;}
+      
+      .container {
+  background-color: rgb(241, 241, 250);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  
+}
+
+
+
+      h2{
+        color: rgb(23, 23, 104);
+        padding: 30px;
+      }
+
+
+
+    
+  </style>
+</head>
+<body>
+    <nav style="background-color: black; margin-bottom: 30px;" class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="/" style="display: flex; align-items: center;">
+                <img src="img/Ferramenta.png" alt="Logo" style="width: 30px; height: 30px; margin-right: 5px;">
+                <div style="color: azure;">Suporte Técnico</div>
+            </a>
+            <div class="btn" style="background-color: grey; border-radius: 5px;">
+                <a style="text-decoration: none;" href="#">
+                    <div style="color: azure;">Limpar Chamados</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container" style="width: 600px; border-radius: 10px;">
+        <div class="mar">
+        <h2 class="text-center">Novo Chamado</h2>
+        <form method="post" action="/addChamado">
+          <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do cliente">
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea class="form-control" id="descricao" name="descricao" placeholder="Descrição do chamado"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <input type="text" class="form-control" name="tipo" id="tipo" readonly value="<%=dados%>">
+          </div>
+          <div class="center-button btnn">
+            <button type="submit" style="width: 300px !important;
+            height: 50px !important;" class="btn btn-primary btnn">Enviar</button>
+          </div>
+        </form>
+    </div>
+    </div>
+    
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
